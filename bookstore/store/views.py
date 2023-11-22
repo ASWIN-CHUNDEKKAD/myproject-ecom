@@ -19,23 +19,23 @@ def home(request):
 
     # if cached_data is None:
         # If the data is not in the cache, 
-    trending_products = Product.objects.filter(trending=1).select_related('category')
-    cate_slider = Category_slider.objects.all()
-    authors = Author.objects.all()
-    testimonial = Testimonial.objects.filter(status=1)
-    banner = Banner.objects.filter(status=1)
+    # trending_products = Product.objects.filter(trending=1).select_related('category')
+    # cate_slider = Category_slider.objects.all()
+    # authors = Author.objects.all()
+    # testimonial = Testimonial.objects.filter(status=1)
+    # banner = Banner.objects.filter(status=1)
 
-    context = {
-        'trending_products': trending_products,
-        'cate_slider': cate_slider,
-        'authors': authors,
-        'testimonial': testimonial,
-        'banner': banner,
-    }
+    # context = {
+    #     'trending_products': trending_products,
+    #     'cate_slider': cate_slider,
+    #     'authors': authors,
+    #     'testimonial': testimonial,
+    #     'banner': banner,
+    # }
 
     # cache.set(cache_key, context, timeout=10)  
 
-    return render(request, 'store/index.html', context)
+    return render(request, 'store/index.html')
     # else:
         # If the data is in the cache,
         # return render(request, 'store/index.html', cached_data)
