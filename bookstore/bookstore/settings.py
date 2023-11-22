@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-h$n&-uy$r-8fln5awh^mk6l90t&b^5(0%2#9n7xp-@3eju^af'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['13.48.84.228']
 
 
 # Application definition
@@ -87,10 +87,10 @@ WSGI_APPLICATION = 'bookstore.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "ecommerce",
-        "USER": "das",
-        "PASSWORD": "aswin@1997",
-        "HOST": "127.0.0.1",
+        "NAME": "bookspot",
+        "USER": "bookspot",
+        "PASSWORD": "bookspot",
+        "HOST": "ecommerce-db.crim8ie8zjfj.eu-north-1.rds.amazonaws.com",
         "PORT": "5432",
     }
 }
