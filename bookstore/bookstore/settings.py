@@ -31,10 +31,6 @@ ALLOWED_HOSTS = ['13.48.84.228','127.0.0.1','www.bookspot.cloud']
 
 CSRF_TRUSTED_ORIGINS = ['https://bookspot.cloud', 'https://www.bookspot.cloud']
 
-
-# hjgkdhf
-
-
 # Application definition
 
 INSTALLED_APPS = [
