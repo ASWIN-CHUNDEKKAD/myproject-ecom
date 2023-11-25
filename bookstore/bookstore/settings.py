@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['13.48.84.228','127.0.0.1','www.bookspot.cloud']
 
+# hjgkdhf
+
 
 # Application definition
 
