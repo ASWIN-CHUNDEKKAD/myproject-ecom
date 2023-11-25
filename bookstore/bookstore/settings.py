@@ -161,7 +161,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'assets', 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# jhdgs
 
 INTERNAL_IPS = [
     "127.0.0.1",
