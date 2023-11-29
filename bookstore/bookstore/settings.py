@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'bookstore.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "ecom",
+        "NAME": "myfirstproject",
         "USER": "bookspot",
         "PASSWORD": "bookspot",
         "HOST": "ecommerce-db.crim8ie8zjfj.eu-north-1.rds.amazonaws.com",
