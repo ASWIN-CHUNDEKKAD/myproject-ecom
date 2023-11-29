@@ -134,68 +134,32 @@ def about_us(request):
 
 
 # ...START-FUNCTION OF CATEGORY OF BOOKS...
-def get_category_list_cache_key():
-    return 'category_list_cache'
-
-@receiver(post_save, sender=Category)
-@receiver(post_delete, sender=Category)
-def invalidate_category_list_cache(sender, instance, **kwargs):
-    cache_key = get_category_list_cache_key()
-    cache.delete(cache_key)
-
 def category(request):
-    '''CATEGORY OF BOOKS(FICTION, NON-FICTION,...)'''
-    # Check if the category list is in the cache
-    cache_key = get_category_list_cache_key()
-    cached_data = cache.get(cache_key)
-    if cached_data is not None:
-        return cached_data
-
-    categories = Category.objects.filter(status=0)
-    context = {'category': categories}
-    # Store the data in the cache with a timeout 
-    cache.set(cache_key, render(request, 'store/category.html', context), 3600)
-    return render(request, 'store/category.html', context)
+    category = Category.objects.filter(status=0)
+    context = {
+        'category':category
+        }
+    return render(request,'store/category.html',context)
 # ...END-FUNCTION OF CATEGORY OF BOOKS...
 
 
 
 
 # ...START- FUNCTION OF PRODUCTS LISTING OF EACH CATEGORY...
-def get_product_list_cache_key(category_name):
-    return f'product_list_{category_name}_cache'
-
-@receiver(post_save, sender=Product)
-@receiver(post_delete, sender=Product)
-def invalidate_product_list_cache(sender, instance, **kwargs):
-    if hasattr(instance, 'category'):
-        category_name = instance.category.name
-        cache_key = get_product_list_cache_key(category_name)
-        cache.delete(cache_key)
-
-def categoryview(request, name):
-    '''EACH CATEGORIES, THERE ARE SEVERAL BOOKS,THIS FUNCTION ALSO REPRESENTS THE FILTERATION BY CATEGORIES'''
-    # Check if the product list is in the cache
-    product_cache_key = get_product_list_cache_key(name)
-    product_cached_data = cache.get(product_cache_key)
-
-    if product_cached_data is not None:
-        return product_cached_data
-
-    if Category.objects.filter(name=name, status=0).exists():
-        products = Product.objects.filter(category__name=name, status=0).select_related('category')
+def categoryview(request,name):
+    if(Category.objects.filter(name=name,status=0)):                
+        products = Product.objects.filter(category__name=name,status=0)
+        products = Product.objects.filter(category__name=name,status=0).select_related('category')
         category = Category.objects.filter(name=name).first()
         context = {
-            'products': products,
-            'category': category
-        }
-
-        # Store the data in the cache with a timeout 
-        cache.set(product_cache_key, render(request, 'store/products/index.html', context), 3600)
-        return render(request, 'store/products/index.html', context)
+            'products':products,
+            'category':category
+            }
+        return render(request,'store/products/index.html',context)
     else:
-        messages.warning(request, "No such category found")
+        messages.warning(request,"no such category found")
         return redirect('category')
+    
 # ...END- FUNCTION OF PRODUCTS LISTING OF EACH CATEGORY...
 
     
