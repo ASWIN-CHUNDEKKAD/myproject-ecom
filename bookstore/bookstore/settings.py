@@ -48,14 +48,14 @@ INSTALLED_APPS = [
     # "debug_toolbar",
     'rangefilter',
     'import_export',
-    'whitenoise.runserver_nostatic'
+    # 'whitenoise.runserver_nostatic'
     
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
