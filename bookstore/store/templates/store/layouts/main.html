@@ -174,7 +174,7 @@
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
     <script>
-        alertify.set('notifier','position', 'top-right');
+        alertify.set('notifier','position', 'bottom-left');
         
         {% for msg in messages %}
             alertify.success('{{ msg }}');
@@ -190,9 +190,6 @@
     {% comment %} Rozorpay checkout js  {% endcomment %}
     <script src="{% static 'js/checkout.js' %}"></script>
 
-    {% comment %} <footer class="container-fluid bg-info text-center fst-italic fs-6 fixed-bottom text-muted"> 
-        Copyright : 2023 | Developed By Aswindas
-    </footer> {% endcomment %}
     
 </body>
 </html>
