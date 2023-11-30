@@ -12,6 +12,7 @@ from store.models import Wishlist,Product
 # ...START- FUNCTION OF WISHLIST INDEX PAGE...
 @login_required(login_url='loginpage')
 def index(request):
+    '''FUNCTION OF WISHLIST INDEX PAGE'''
     wishlist = Wishlist.objects.filter(user=request.user).select_related('product')
     context = {'wishlist':wishlist}
     return render(request,'store/wishlist.html',context)
@@ -22,6 +23,7 @@ def index(request):
 
 # ...START- ADD TO WISHLIST FUNCTION...
 def addtowishlist(request):
+    '''FUNCTION OF ADD TO WISHLIST'''
     if request.method == 'POST':
         if request.user.is_authenticated:
             prod_id = int(request.POST.get('product_id'))
@@ -45,6 +47,7 @@ def addtowishlist(request):
 
 # ...START- DELETE WISHLIST FUNCTION...
 def deletewishlistitem(request):
+    '''FUNCTION OF DELETE WISHLIST'''
     if request.method == 'POST':
         if request.user.is_authenticated:
             prod_id = int(request.POST.get('product_id'))

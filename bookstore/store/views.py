@@ -135,6 +135,7 @@ def about_us(request):
 
 # ...START-FUNCTION OF CATEGORY OF BOOKS...
 def category(request):
+    '''FUNCTION OF CATEGORY OF BOOKS'''
     category = Category.objects.filter(status=0)
     context = {
         'category':category
@@ -147,6 +148,7 @@ def category(request):
 
 # ...START- FUNCTION OF PRODUCTS LISTING OF EACH CATEGORY...
 def categoryview(request,name):
+    '''FUNCTION OF PRODUCT LISTING'''
     if(Category.objects.filter(name=name,status=0)):                
         products = Product.objects.filter(category__name=name,status=0)
         products = Product.objects.filter(category__name=name,status=0).select_related('category')
