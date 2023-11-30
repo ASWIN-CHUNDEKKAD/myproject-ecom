@@ -24,11 +24,20 @@
             <!-- Grid column -->
   
             <!-- Grid column -->
+            {% if request.user.is_authenticated %}
             <div class="col-md-4">
               <h6 class="text-uppercase font-weight-bold">
                 <a href="{% url 'myorders' %}" class="text-dark">My orders</a>
               </h6>
             </div>
+            {% else %}
+            <div class="col-md-4">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="{% url 'loginpage' %}" class="text-dark">Login</a>
+              </h6>
+            </div>
+            {% endif %}
+
             <!-- Grid column -->
   
             <!-- Grid column -->
