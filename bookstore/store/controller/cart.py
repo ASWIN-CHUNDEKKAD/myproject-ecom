@@ -4,9 +4,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from store.models import Product,Cart
-from django.core.cache import cache
-from django.db.models.signals import post_save, post_delete
-from django.dispatch import receiver
+# from django.core.cache import cache
+# from django.db.models.signals import post_save, post_delete
+# from django.dispatch import receiver
 
 
 # ...START- FUNCTION OF ADD TO CART...
@@ -32,7 +32,7 @@ def addtocart(request):
             else:
                 return JsonResponse({'status' : 'No Such Product Found'})          
         else:
-            return JsonResponse({'status':'Login to continue'}) 
+            return JsonResponse({'status' : 'Login to continue'}) 
     return redirect('/')    
 # ...END- FUNCTION OF ADD TO CART...
 

@@ -34,7 +34,7 @@ def home(request):
         }
 
         # Cache the data for future requests
-        cache.set(cache_key, context, timeout=10)  # Cache for 1 hr
+        cache.set(cache_key, context, timeout=10)  # Cache for 10 sec
 
         return render(request, 'store/index.html', context)
     else:
