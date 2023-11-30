@@ -19,7 +19,7 @@ def addtocart(request):
             product_check = Product.objects.get(id=prod_id)
             if(product_check):
                 if(Cart.objects.filter(user=request.user.id,product_id = prod_id)):
-                    return JsonResponse({'status' : 'Product Already in Cart'})
+                    return JsonResponse({'status' : 'Product Allready in Cart'})
                 else:
                     prod_qty = int(request.POST.get('product_qty'))
 
@@ -32,7 +32,8 @@ def addtocart(request):
             else:
                 return JsonResponse({'status' : 'No Such Product Found'})          
         else:
-            return JsonResponse({'status' : 'Login to continue'}) 
+            # return JsonResponse({'status' : 'Login to continue'}) 
+            return redirect("loginpage")
     return redirect('/')    
 # ...END- FUNCTION OF ADD TO CART...
 
