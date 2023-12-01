@@ -150,7 +150,7 @@ def category(request):
 def categoryview(request,name):
     '''FUNCTION OF PRODUCT LISTING'''
     if(Category.objects.filter(name=name,status=0)):                
-        products = Product.objects.filter(category__name=name,status=0)
+        # products = Product.objects.filter(category__name=name,status=0)
         products = Product.objects.filter(category__name=name,status=0).select_related('category')
         category = Category.objects.filter(name=name).first()
         context = {
