@@ -63,7 +63,7 @@ def updatecart(request):
             if prod_qty < 10:
                 cart.product_qty = prod_qty
                 cart.save()
-                # return JsonResponse({'status': 'Updated Successfully'})
+                return JsonResponse({'status': 'Updated Successfully'})
             else:
                 # Display an alert when the limit is reached
                 messages.error(request, 'Limit reached: You cannot increment beyond 10.')
