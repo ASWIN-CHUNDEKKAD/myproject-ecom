@@ -225,31 +225,19 @@ def productlistAjax(request):
 def searchproduct(request):
     '''SEARCH PRODUCTS'''
     if request.method == "POST":
-        searchedterm = request.POST.get('productsearch')
-        if searchedterm == "":
-            return redirect(request.META.get('HTTP_REFERER'))
-        else:
-            # Construct a cache key based on the search term
-            cache_key = f'search_{searchedterm}'
-
-            # Try to retrieve the search result from the cache
-            product = cache.get(cache_key)
-
-            if product is not None:
-                # If the product is found in the cache, use it and display it
-                return redirect('category' + '/' + product.category.name + '/' + product.name)
-            
-            # If the product is not in the cache, perform the search
-            product = Product.objects.filter(name__contains=searchedterm).first()
-
-            if product:
-                # Cache the search result for future requests
-                cache.set(cache_key, product, timeout=3600)  # Cache for 1 HR
-                print(f"Search result for '{searchedterm}' not found in cache, generated and cached.")
-                return redirect('category' + '/' + product.category.name + '/' + product.name)
-            else:
-                messages.info(request, "No product matched your search")
+            searchedterm = request.POST.get('productsearch')
+            if searchedterm == "":
                 return redirect(request.META.get('HTTP_REFERER'))
-
-    return redirect(request.META.get('HTTP_REFERER'))
+            else:
+                product = Product.objects.filter(name__contains=searchedterm).first()
+                
+                if product:
+                    return redirect('category'+'/'+product.category.name+'/'+product.name)
+                else:
+                    messages.info(request,"No product matched your search")
+                    return redirect(request.META.get('HTTP_REFERER'))
+                    
+                
+    return redirect(request.META.get('HTTP_REFERER'))   
+#to get previous page address
 # ...END SEARCH PRODUCTS FUNCTION...
